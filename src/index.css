@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* AAHA SOLUTIONS E-commerce Design System */
+
+@layer base {
+  :root {
+    /* Main gradient background colors */
+    --background: 168 60% 35%;
+    --background-gradient-from: 168 65% 25%;
+    --background-gradient-to: 140 55% 45%;
+    --foreground: 0 0% 100%;
+
+    /* Cards - white with dark text */
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 20%;
+
+    /* Primary - Golden Yellow for CTAs */
+    --primary: 48 95% 53%;
+    --primary-foreground: 220 20% 15%;
+
+    /* Secondary - Dark teal header */
+    --secondary: 180 30% 15%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 168 20% 90%;
+    --muted-foreground: 220 10% 40%;
+
+    /* Accent - Coral/Red for actions */
+    --accent: 0 85% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 168 20% 80%;
+    --input: 0 0% 100%;
+    --ring: 48 95% 53%;
+
+    --radius: 0.5rem;
+
+    /* Category highlight */
+    --category-active: 48 95% 65%;
+    --category-active-foreground: 220 20% 15%;
+    
+    /* Price color */
+    --price: 35 100% 45%;
+    
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 220 20% 20%;
+    --sidebar-primary: 48 95% 53%;
+    --sidebar-primary-foreground: 220 20% 15%;
+    --sidebar-accent: 48 95% 85%;
+    --sidebar-accent-foreground: 220 20% 15%;
+    --sidebar-border: 168 20% 85%;
+    --sidebar-ring: 48 95% 53%;
+  }
+
+  .dark {
+    --background: 168 60% 35%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 20%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 20%;
+    --primary: 48 95% 53%;
+    --primary-foreground: 220 20% 15%;
+    --secondary: 180 30% 15%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 168 20% 90%;
+    --muted-foreground: 220 10% 40%;
+    --accent: 0 85% 60%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 168 20% 80%;
+    --input: 0 0% 100%;
+    --ring: 48 95% 53%;
+    --category-active: 48 95% 65%;
+    --category-active-foreground: 220 20% 15%;
+    --price: 35 100% 45%;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 220 20% 20%;
+    --sidebar-primary: 48 95% 53%;
+    --sidebar-primary-foreground: 220 20% 15%;
+    --sidebar-accent: 48 95% 85%;
+    --sidebar-accent-foreground: 220 20% 15%;
+    --sidebar-border: 168 20% 85%;
+    --sidebar-ring: 48 95% 53%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply text-foreground;
+    background: linear-gradient(135deg, hsl(var(--background-gradient-from)) 0%, hsl(var(--background-gradient-to)) 100%);
+    min-height: 100vh;
+  }
+}
+
+@layer utilities {
+  .gradient-bg {
+    background: linear-gradient(135deg, hsl(var(--background-gradient-from)) 0%, hsl(var(--background-gradient-to)) 100%);
+  }
+  
+  .text-price {
+    color: hsl(var(--price));
+  }
+}
