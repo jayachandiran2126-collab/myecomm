@@ -24,7 +24,12 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-const API_URL = "http://localhost:5000";
+/* 🔥 CHANGE THIS TO YOUR RENDER BACKEND URL */
+const API_URL =
+  process.env.NODE_ENV === "production"
+    ? "https://myecomm-backend.onrender.com"
+
+    : "http://localhost:5000";
 
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({
   children,
@@ -47,6 +52,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
         );
         return true;
       }
+
       return false;
     } catch (err: any) {
       console.error("Login error:", err.response?.data || err.message);
@@ -54,20 +60,25 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
     }
   };
 
-  //signup//
+  // 📝 SIGNUP
+  const signup = async (userData: any): Promise<boolean> => {
+    try {
+      const res = await axios.post(`${API_URL}/register`, userData);
 
-const signup = async (userData: any): Promise<boolean> => {
-  try {
-    const res = await axios.post(`${API_URL}/register`, userData);
-    return true;
-  } catch (error: any) {
-    console.error("Signup FULL ERROR:", error);
-    console.error("Signup RESPONSE:", error.response?.data);
-    return false;
-  }
-};
+      if (res.data?.user) {
+        setUser(res.data.user);
+        localStorage.setItem(
+          "aaha_current_user",
+          JSON.stringify(res.data.user)
+        );
+      }
 
-
+      return true;
+    } catch (error: any) {
+      console.error("Signup error:", error.response?.data || error.message);
+      return false;
+    }
+  };
 
   // 🚪 LOGOUT
   const logout = () => {
